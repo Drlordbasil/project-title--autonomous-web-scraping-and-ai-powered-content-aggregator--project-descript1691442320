@@ -1,0 +1,15 @@
+The package requirements for this Python program are:
+
+- requests
+- beautifulsoup4
+- transformers
+- datetime
+- tweepy
+- facebook-sdk
+- python-linkedin
+- pytz
+- google-api-python-client
+- google-cloud-language
+- google-auth
+
+You can install these packages by running the command `pip install <package_name>` for each package.
