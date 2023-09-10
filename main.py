@@ -83,14 +83,17 @@ class SocialMediaIntegration:
 
     def authenticate_twitter_api(self):
         twitter_credentials = self.social_media_accounts['twitter']
-        auth = tweepy.OAuthHandler(twitter_credentials['api_key'], twitter_credentials['api_secret'])
-        auth.set_access_token(twitter_credentials['access_token'], twitter_credentials['access_token_secret'])
+        auth = tweepy.OAuthHandler(
+            twitter_credentials['api_key'], twitter_credentials['api_secret'])
+        auth.set_access_token(
+            twitter_credentials['access_token'], twitter_credentials['access_token_secret'])
         twitter_api = tweepy.API(auth)
         return twitter_api
 
     def authenticate_facebook_api(self):
         facebook_credentials = self.social_media_accounts['facebook']
-        fb_graph = facebook.GraphAPI(access_token=facebook_credentials['access_token'])
+        fb_graph = facebook.GraphAPI(
+            access_token=facebook_credentials['access_token'])
         return fb_graph
 
     def authenticate_linkedin_api(self):
@@ -103,7 +106,8 @@ class SocialMediaIntegration:
         )
         linkedin_auth.authorization_code = linkedin_credentials['access_token']
         linkedin_auth.get_access_token()
-        linkedin_application = linkedin.LinkedInApplication(token=linkedin_auth.get_access_token())
+        linkedin_application = linkedin.LinkedInApplication(
+            token=linkedin_auth.get_access_token())
         return linkedin_application
 
     def share_content(self):
@@ -234,8 +238,10 @@ class AutonomousProgram:
         self.generated_content = nlp_model.generate_text('This is a test.')
 
     def personalize_content(self):
-        content_personalization = ContentPersonalization(user_preferences=self.target_audience)
-        self.generated_content = content_personalization.personalize_content(self.generated_content)
+        content_personalization = ContentPersonalization(
+            user_preferences=self.target_audience)
+        self.generated_content = content_personalization.personalize_content(
+            self.generated_content)
 
     def cleaning_data(self):
         data_cleaning = DataCleaning(data=self.scraped_data)
@@ -244,19 +250,23 @@ class AutonomousProgram:
     def formatting_content(self):
         content_formatting = ContentFormatting(content=self.cleaned_data)
         self.formatted_content = content_formatting.format_content()
-        seo_optimization = SEOOptimization(formatted_content=self.formatted_content)
+        seo_optimization = SEOOptimization(
+            formatted_content=self.formatted_content)
         self.optimized_content = seo_optimization.optimize_content()
 
     def share_content(self):
-        social_media_integration = SocialMediaIntegration(content=self.optimized_content, social_media_accounts=self.social_media_accounts)
+        social_media_integration = SocialMediaIntegration(
+            content=self.optimized_content, social_media_accounts=self.social_media_accounts)
         social_media_integration.share_content()
 
     def track_performance(self):
-        performance_tracking = PerformanceTracking(content=self.optimized_content)
+        performance_tracking = PerformanceTracking(
+            content=self.optimized_content)
         self.performance_data = performance_tracking.track_performance()
 
     def identify_opportunities(self):
-        monetization_opportunities = MonetizationOpportunities(performance_data=self.performance_data)
+        monetization_opportunities = MonetizationOpportunities(
+            performance_data=self.performance_data)
         self.monetization_opportunities = monetization_opportunities.identify_opportunities()
 
 
