@@ -121,13 +121,22 @@ class SocialMediaIntegration:
         self.update_linkedin_status(linkedin_application)
 
     def update_twitter_status(self, twitter_api):
-        twitter_api.update_status(self.content)
+        try:
+            twitter_api.update_status(self.content)
+        except tweepy.TweepError as e:
+            print(e)
 
     def update_facebook_status(self, fb_graph):
-        fb_graph.put_object("me", "feed", message=self.content)
+        try:
+            fb_graph.put_object("me", "feed", message=self.content)
+        except facebook.GraphAPIError as e:
+            print(e)
 
     def update_linkedin_status(self, linkedin_application):
-        linkedin_application.submit_share(self.content)
+        try:
+            linkedin_application.submit_share(self.content)
+        except linkedin.LinkedInError as e:
+            print(e)
 
 
 class PerformanceTracking:
